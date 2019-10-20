@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#EF6C00</color>
+    <color name="colorPrimaryDark">#D84315</color>
     <color name="colorAccent">#D81B60</color>
+
+    <!-- Article Title Color -->
+    <color name="articleTitleDark">#000000</color>
+
+    <!-- Article text Color -->
+    <color name="articleText">#303030</color>
+
+    <!-- Button background color -->
+    <color name="trumpButton">#D84315</color>
 </resources>

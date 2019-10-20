@@ -8,4 +8,25 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Article Title. -->
+    <style name="ArticleTitleStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">@color/articleTitleDark</item>
+    </style>
+
+    <!-- Article info Tag text-->
+    <style name="ArticleInfoTagStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/articleTitleDark</item>
+    </style>
+
+    <!-- Article info text -->
+    <style name="ArticleInfoStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/articleText</item>
+    </style>
+
 </resources>

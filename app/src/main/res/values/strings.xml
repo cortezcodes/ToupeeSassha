@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Toupee Sassha</string>
+
+    <!-- news_article_item.xml string resources-->
+    <string name="section">SECTION:</string>
+    <string name="publish_date">PUBLISH DATE:</string>
 </resources>
