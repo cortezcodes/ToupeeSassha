@@ -168,12 +168,15 @@ public final class QueryUtility {
         try{
             //Create a JSONObject from the JSON response String
             JSONObject baseJsonResponse = new JSONObject(newsJSON);
+            //Create A JSON Object from the JSON "Response" key which
+            //contains the array of articles
+            JSONObject responsJsonObj = baseJsonResponse.getJSONObject("response");
 
             /*
             Extract the JSONArray associated with the key called "results", which represents a list
             of features (or articles).
              */
-            JSONArray articleArray = baseJsonResponse.getJSONArray("results");
+            JSONArray articleArray = responsJsonObj.getJSONArray("results");
 
             //For each article in the articleArray, create a NewsArticle object
             for(int i = 0; i < articleArray.length(); i++){
