@@ -6,33 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/article_title_text_view"
+        style="@style/ArticleTitleStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_weight="1"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        tools:text="Article Title"/>
 
-        <TextView
-            android:id="@+id/article_title_text_view"
-            style="@style/ArticleTitleStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            tools:text="Article Title"/>
 
-        <ImageButton
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_weight="0"
-            android:layout_margin="8dp"
-            android:scaleType="centerInside"
-            android:background="@color/trumpButton"
-            android:src="@drawable/trump_image_black"/>
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:orientation="horizontal">
 
         <TextView
@@ -50,16 +40,47 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             tools:text="News Section"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:orientation="horizontal">
+
+            <TextView
+                style="@style/ArticleInfoTagStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:text="@string/publish_date"/>
+
+            <TextView
+                android:id="@+id/article_publish_date_text_view"
+                style="@style/ArticleInfoStyle"
+                android:layout_width="wrap_content"
+                android:minWidth="88dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                tools:text="News Section"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:orientation="horizontal">
 
         <TextView
             style="@style/ArticleInfoTagStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
-            android:text="@string/publish_date"/>
+            android:text="@string/author"/>
 
         <TextView
-            android:id="@+id/article_publish_date_text_view"
+            android:id="@+id/article_author_text_view"
             style="@style/ArticleInfoStyle"
             android:layout_width="wrap_content"
             android:minWidth="88dp"

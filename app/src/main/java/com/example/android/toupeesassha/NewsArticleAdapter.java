@@ -58,6 +58,9 @@ public class NewsArticleAdapter extends ArrayAdapter <NewsArticle>{
         TextView dateTextView = listItemView.findViewById(R.id.article_publish_date_text_view);
         dateTextView.setText(currentArticle.getPublishDate());
 
+        TextView authorTextView = listItemView.findViewById(R.id.article_author_text_view);
+        authorTextView.setText(currentArticle.getAuthor());
+
         return listItemView;
     }
 }

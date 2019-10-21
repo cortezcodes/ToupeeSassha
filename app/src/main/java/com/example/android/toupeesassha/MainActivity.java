@@ -6,12 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.LoaderManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -56,7 +59,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         //Create ListView from the current layout and set the adapter
         ListView listView = (ListView) this.findViewById(R.id.article_list_view);
 
-        //TODO Add empty List state
+        mEmptyStateTextView = (TextView) findViewById(R.id.empty_text_view);
+        mEmptyStateTextView.setText(R.string.empty_query);
+        listView.setEmptyView(mEmptyStateTextView);
 
         //Create a NewsArticleAdapter for the ListView
         mAdapter = new NewsArticleAdapter(this, new ArrayList<NewsArticle>());
@@ -66,7 +71,24 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
          */
         listView.setAdapter(mAdapter);
 
-        //TODO set onClickListener for each item in the ListView.
+        //set an item click listener on the ListView, which sends an intent to a web browser
+        //to open a website with more information about the selected article.
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                //Find the current article that was clicked on
+                NewsArticle currentArticle = mAdapter.getItem(position);
+
+                //Convert the String URL into a URI object (to  pass into the Intent constructor
+                Uri articleUri = Uri.parse(currentArticle.getURL());
+
+                //create a new intent to view the earthquake URI
+                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, articleUri);
+
+                //send the intent to launch a new activity
+                startActivity(websiteIntent);
+            }
+        });
 
         //Get a reference to the ConnectivityManager to check state of network connectivity
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -85,7 +107,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             loaderManager.initLoader(ARTICLE_LOADER_ID, null, this);
         } else {
             //Otherwise, display error.
-            //TODO populate the mEmptyStateTextView for an empty list
+            mEmptyStateTextView.setText(R.string.no_internet);
+
         }
 
 
@@ -107,6 +130,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         uriBuilder.appendQueryParameter("from-date", "2019-09-20");
         uriBuilder.appendQueryParameter("to-date", "2019-10-20");
         uriBuilder.appendQueryParameter("order-by", "newest");
+        uriBuilder.appendQueryParameter("show-tags", "contributor");
         uriBuilder.appendQueryParameter("page-size", "50");
         uriBuilder.appendQueryParameter("q","Donald Trump");
         uriBuilder.appendQueryParameter("api-key",API_KEY);

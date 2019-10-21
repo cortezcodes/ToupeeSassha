@@ -183,14 +183,29 @@ public final class QueryUtility {
                 //Get a single article at position i within the list of articles
                 JSONObject currentArticle = articleArray.getJSONObject(i);
 
+                //Get the author from the tags array
+                JSONArray tagsArray = currentArticle.getJSONArray("tags");
+                String author = null;
+                //loop through the author tags to get each author and add them to the string
+                for(int k = 0; k< tagsArray.length(); k++){
+                    JSONObject currentAuthor = tagsArray.getJSONObject(k);
+                    if(author != null){
+                        author = author + ", " + currentAuthor.getString("webTitle");
+                    } else{
+                       author = currentAuthor.getString("webTitle");
+                    }
+
+                }
+
                 //Extract the value for each Title, Section, URL, and PublishDate keys
                 String articleTitle = currentArticle.getString("webTitle");
                 String section = currentArticle.getString("sectionName");
                 String url = currentArticle.getString("webUrl");
                 String publishDate = currentArticle.getString("webPublicationDate");
 
+
                 //Create a new NewsArticle object with the data retrieved from the JSON response
-                articles.add(new NewsArticle(articleTitle, url, publishDate, section));
+                articles.add(new NewsArticle(articleTitle, url, publishDate, section, author));
             }
         } catch (JSONException e){
             /*

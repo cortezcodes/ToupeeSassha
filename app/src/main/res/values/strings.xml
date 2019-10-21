@@ -4,4 +4,11 @@
     <!-- news_article_item.xml string resources-->
     <string name="section">SECTION:</string>
     <string name="publish_date">PUBLISH DATE:</string>
+    <string name="author">AUTHOR:</string>
+
+    <!-- Empty Query-->
+    <string name="empty_query">Sorry no articles! Try again Later.</string>
+
+    <!-- No Internet-->
+    <string name="no_internet">Please Connect to the Internet.</string>
 </resources>
